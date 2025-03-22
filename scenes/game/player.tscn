@@ -134,35 +134,35 @@ region = Rect2(192, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyajl"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(0, 320, 64, 64)
+region = Rect2(448, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fh65b"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(64, 320, 64, 64)
+region = Rect2(384, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ey0fj"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(128, 320, 64, 64)
+region = Rect2(320, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knjtp"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(192, 320, 64, 64)
+region = Rect2(256, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbjuv"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(256, 320, 64, 64)
+region = Rect2(192, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wx2rq"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(320, 320, 64, 64)
+region = Rect2(128, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yuli"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(384, 320, 64, 64)
+region = Rect2(64, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74cnq"]
 atlas = ExtResource("3_u3rb4")
-region = Rect2(448, 320, 64, 64)
+region = Rect2(0, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dd427"]
 atlas = ExtResource("1_6w7gq")
@@ -410,7 +410,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w7gq"]
-size = Vector2(16, 41.75)
+size = Vector2(16, 37.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd427"]
 size = Vector2(35, 16)
@@ -423,14 +423,17 @@ fallGravity = 2500
 jumpVelocity = -900
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_1uit0")
-animation = &"duck"
+animation = &"run_fast"
 autoplay = "idle"
 
 [node name="RunCol" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11.125)
+position = Vector2(1, 53)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_6w7gq")
 
 [node name="DuckCol" type="CollisionShape2D" parent="."]
-position = Vector2(2, 24)
+position = Vector2(6, 96)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_dd427")
