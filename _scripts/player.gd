@@ -49,7 +49,7 @@ func _handle_animation(velocity: Vector2):
 		if is_ducking:
 			playerSprite.play("duck")
 		else:
-			playerSprite.play("run_slow")
+			playerSprite.play("run_fast")
 	else:
 		if velocity.y < 0:
 			playerSprite.play("jump")
