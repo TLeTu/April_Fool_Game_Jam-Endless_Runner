@@ -13,6 +13,7 @@ const maxSpeed : float = 25.0
 const speedModifier : int = 5000
 
 var groundHeight : int
+var groundScale
 var screenSize : Vector2i
 
 var score : int
@@ -21,6 +22,7 @@ func _ready() -> void:
 	score = 0
 	screenSize = get_window().size
 	groundHeight = $Ground.get_node("Sprite2D").texture.get_height()
+	groundScale = $Ground.get_node("Sprite2D").scale
 	new_game()
 
 func new_game():
@@ -35,7 +37,7 @@ func generate_obs():
 		var obsHeight = obs.get_node("Sprite2D").texture.get_height()
 		var obsScale = obs.get_node("Sprite2D").scale
 		var obsX = -screenSize.x - score - 100
-		var obsY = screenSize.y - groundHeight - (obsHeight * obsScale.y / 2)
+		var obsY = screenSize.y - groundHeight * groundScale.y - (obsHeight * obsScale.y / 2) + 5
 		lastObs = obs
 		obs.position = Vector2i(obsX, obsY)
 		add_child(obs)
@@ -43,13 +45,14 @@ func generate_obs():
 
 func _process(delta: float) -> void:
 	score += speed
-	print(score)
+
 	generate_obs()
 	for obs in obstacles:
 		if obs.position.x > ($Camera2D.position.x + screenSize.x):
 				remove_obs(obs)
 
 func _physics_process(delta: float) -> void:
+	print(speed)
 	speed = startSpeed + score / speedModifier
 	if speed > maxSpeed:
 		speed = maxSpeed
