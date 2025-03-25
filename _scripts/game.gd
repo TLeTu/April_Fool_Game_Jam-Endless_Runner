@@ -31,10 +31,12 @@ var game_running := false
 var screen_size : Vector2i
 var ground_height : int
 var ground_scale : Vector2
-var countdown_time : int = 0  # 23:59 in minutes
-var countdown_speed : float = 2  # 1 real-time second = 1 minute decrease
+var countdown_time : int = 23 * 60 + 59  # 23:59 in minutes
+var countdown_speed : float = 1000  # 1 real-time second = 1 minute decrease
 var elapsed_time : float = 0.0  # Tracks time passed for countdown
 #endregion
+
+var previous_time
 
 func _ready() -> void:
 	initialize_game()
@@ -75,18 +77,18 @@ func reset_game_state() -> void:
 	score = 0
 	speed = 0
 	obstacles.clear()
-	countdown_time = 0
+	countdown_time = 23 * 60 + 59
 	elapsed_time = 0.0
 	update_time_label()
 #endregion
 
 #region Obstacle Management
 func _on_obstacle_timer_timeout() -> void:
-	generate_obstacle()
+	#generate_obstacle()
+	pass
 
 func generate_obstacle() -> void:
 	var obstacle_scene = obstacles_table.get_random()
-	print("Random scene: ", obstacle_scene)
 	if obstacle_scene:
 		var obstacle = obstacle_scene.instantiate()
 		var obstacle_sprite = obstacle.get_node("Sprite2D")
@@ -122,36 +124,53 @@ func game_over() -> void:
 #endregion
 
 #region Countdown System
+func get_time_period() -> int:
+	var hour = (countdown_time / 60) % 24  # Lấy giờ từ 0 đến 23 (đếm ngược)
+	if hour >= 20 or hour == 0:  # 0 AM -> 8 PM
+		return 1
+	elif hour >= 16:  # 8 PM -> 4 PM
+		return 2
+	elif hour >= 12:  # 4 PM -> 12 PM
+		return 3
+	elif hour >= 8:  # 12 PM -> 8 AM
+		return 4
+	elif hour >= 4:  # 8 AM -> 4 AM
+		return 5
+	else:  # 4 AM -> 0 AM (ngày hôm trước)
+		return 6
+
 func update_time_label() -> void:
-	if countdown_time < 0:
-		countdown_time = 24 * 60 - 1
-	
-	var hours = (countdown_time / 60) % 12  # Convert to 12-hour format
+	var hours = (countdown_time / 60) % 12  # Chuyển sang 12 giờ
 	var minutes = countdown_time % 60
 	var period = "AM" if (countdown_time / 60) < 12 else "PM"
-	hours = 12 if hours == 0 else hours  # Ensure hour is at least 1
-	
+	if (countdown_time / 60) < 1:  
+		hours = 0  # Show 0 AM when below 1 AM  
+	else:
+		hours = 12 if hours == 0 else hours  
 	time_label.text = "%02d:%02d %s" % [hours, minutes, period]
+
+func update_countdown(delta: float) -> void:
+	if countdown_time <= 0:
+		return  # Ngừng đếm ngược khi đạt 00:00
+	
+	elapsed_time += delta * countdown_speed
+	if elapsed_time >= 1.0:
+		countdown_time -= 1
+		elapsed_time = 0.0
+		update_time_label()
 #endregion
 
 #region Game Loop
 func _process(delta: float) -> void:
 	if !game_running:
 		return
-		
+	print(countdown_time)
 	update_score()
 	update_countdown(delta)
 	clean_up_obstacles()
 
 func update_score() -> void:
 	score += speed
-
-func update_countdown(delta: float) -> void:
-	elapsed_time += delta * countdown_speed
-	if elapsed_time >= 1.0:
-		countdown_time -= 1
-		elapsed_time = 0.0
-		update_time_label()
 
 func clean_up_obstacles() -> void:
 	for obstacle in obstacles:
