@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://buq8du1h3tvni"]
+
+[ext_resource type="Texture2D" uid="uid://dl7xoi43722tc" path="res://assets/img/obstacles/truck-Sheet.png" id="1_uy4nr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruo2t"]
+atlas = ExtResource("1_uy4nr")
+region = Rect2(0, 0, 99, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rr0n"]
+atlas = ExtResource("1_uy4nr")
+region = Rect2(99, 0, 99, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mv61"]
+atlas = ExtResource("1_uy4nr")
+region = Rect2(198, 0, 99, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5lpp"]
+atlas = ExtResource("1_uy4nr")
+region = Rect2(297, 0, 99, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cq35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruo2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rr0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mv61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5lpp")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy4nr"]
+size = Vector2(241, 239)
+
+[node name="Truck" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_2cq35")
+animation = &"run"
+autoplay = "run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(69.5, 10.5)
+shape = SubResource("RectangleShape2D_uy4nr")

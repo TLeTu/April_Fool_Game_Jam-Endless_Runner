@@ -423,8 +423,8 @@ size = Vector2(35, 15)
 z_index = 1
 script = ExtResource("1_dd427")
 gravity = 1800
-fallGravity = 2500
-jumpVelocity = -900
+fall_gravity = 3500
+jump_velocity = -1050
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
