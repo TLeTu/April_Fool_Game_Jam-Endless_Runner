@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxensj8107j6j"
-path="res://.godot/imported/endless-runner-player-sprite.png-38f787e4c4796796e9850f96136d35da.ctex"
+uid="uid://dun16dednm17r"
+path="res://.godot/imported/Car-back-leg-Sheet.png-67751a7c0ab7a4d8a84835cdf935fca7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/player/endless-runner-player-sprite.png"
-dest_files=["res://.godot/imported/endless-runner-player-sprite.png-38f787e4c4796796e9850f96136d35da.ctex"]
+source_file="res://assets/img/obstacles/Car-back-leg-Sheet.png"
+dest_files=["res://.godot/imported/Car-back-leg-Sheet.png-67751a7c0ab7a4d8a84835cdf935fca7.ctex"]
 
 [params]
 

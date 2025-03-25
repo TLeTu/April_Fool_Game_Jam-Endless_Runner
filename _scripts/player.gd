@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var playerSprite := $AnimatedSprite2D
 @onready var runCollider := $RunCol
 @onready var duckCollider := $DuckCol
+@onready var game := $".."
 
 var jumpBufferTimer: float = 0.0  # Tracks how long jump was pressed
 var is_ducking: bool = false
@@ -16,6 +17,9 @@ func _get_gravity(velocity: Vector2) -> int:
 	return gravity if velocity.y < 0 else fallGravity
 
 func _physics_process(delta: float) -> void:
+	if !game.game_running: # Change later
+		playerSprite.stop()
+		return
 	_handle_animation(velocity)
 	_handle_colliders()
 
