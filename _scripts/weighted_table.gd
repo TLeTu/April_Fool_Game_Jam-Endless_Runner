@@ -5,8 +5,15 @@ var _total_weight: int = 0
 
 # Add an item with a weight
 func add_item(item, weight: int) -> void:
-	_items.append({ "item": item, "weight": weight })
+	_items.append({ "item": item, "weight": weight})
 	_total_weight += weight
+
+# Return an item width
+func get_width(item) -> int:
+	for entry in _items:
+		if entry["item"] == item:
+			return entry["width"]
+	return 0
 
 # Change the weight of an existing item
 func change_weight(item, new_weight: int) -> bool:

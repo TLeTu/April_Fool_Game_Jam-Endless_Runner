@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://buq8du1h3tvni"]
+[gd_scene load_steps=9 format=3 uid="uid://buq8du1h3tvni"]
 
 [ext_resource type="Texture2D" uid="uid://dl7xoi43722tc" path="res://assets/img/obstacles/truck-Sheet.png" id="1_uy4nr"]
+[ext_resource type="Texture2D" uid="uid://dhg4q5y1rtjh4" path="res://assets/img/obstacles/truck_sprite.png" id="2_ruo2t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ruo2t"]
 atlas = ExtResource("1_uy4nr")
@@ -52,3 +53,8 @@ autoplay = "run"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(69.5, 10.5)
 shape = SubResource("RectangleShape2D_uy4nr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("2_ruo2t")

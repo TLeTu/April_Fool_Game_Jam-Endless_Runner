@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bko2harxad0w4"]
+[gd_scene load_steps=5 format=3 uid="uid://bko2harxad0w4"]
 
 [ext_resource type="Script" uid="uid://d0v5k8liu7rbs" path="res://_scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://1sufk711od4p" path="res://scenes/game/parallax_background.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://g0a7nm4odskq" path="res://scenes/game/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://d3jpo5uwovlwk" path="res://scenes/game/ground.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://buq8du1h3tvni" path="res://scenes/game/obstacles/truck.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -43,6 +42,3 @@ theme_override_font_sizes/font_size = 42
 text = "00:00 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Truck" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(206, 470)
