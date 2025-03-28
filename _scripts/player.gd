@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var player_sprite := $AnimatedSprite2D
 @onready var run_collider := $RunCol
 @onready var duck_collider := $DuckCol
-@onready var game := $".."
+@onready var game_manager := $".."
 #endregion
 
 #region State Variables
@@ -19,11 +19,16 @@ var jump_buffer_timer: float = 0.0  # Tracks how long jump was pressed
 var is_ducking: bool = false
 #endregion
 
+#region Game State
+enum GameState { RUNNING, PAUSED, GAMEOVER }
+var game_state
+#endregion
+
+func _ready() -> void:
+	game_manager.connect("game_state_changed", self._on_game_state_changed)
+
 func _physics_process(delta: float) -> void:
-	if !game.game_running:
-		_stop_animations()
-		return
-	
+	if !game_state == GameState.RUNNING: return
 	_apply_gravity(delta)
 	_handle_jump_input()
 	_handle_jump_buffer(delta)
@@ -34,6 +39,9 @@ func _physics_process(delta: float) -> void:
 	
 	_update_animations()
 	_update_colliders()
+
+func _on_game_state_changed(new_state):
+	game_state = new_state
 
 #region Physics Helpers
 func _get_gravity() -> int:
