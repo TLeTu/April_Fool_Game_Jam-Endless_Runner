@@ -28,7 +28,7 @@ func _ready() -> void:
 	game_manager.connect("game_state_changed", self._on_game_state_changed)
 
 func _physics_process(delta: float) -> void:
-	if !game_state == GameState.RUNNING: return
+	#if !game_state == GameState.RUNNING: return
 	_apply_gravity(delta)
 	_handle_jump_input()
 	_handle_jump_buffer(delta)

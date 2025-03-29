@@ -11,7 +11,6 @@
 script = ExtResource("1_lbhrr")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_uwrxv")]
-visible = false
 
 [node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
 

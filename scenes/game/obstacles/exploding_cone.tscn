@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctvmnjpnx0sir"]
 
 [ext_resource type="Script" uid="uid://rtugpqhhytsg" path="res://_scripts/objects/explode_cone.gd" id="1_clbi3"]
-[ext_resource type="Texture2D" uid="uid://4bb1dosls7gh" path="res://assets/img/obstacles/cone.png" id="1_x37c1"]
+[ext_resource type="Texture2D" uid="uid://25sj55tod02v" path="res://assets/img/obstacles/cone-explode.png" id="3_vyqdg"]
 [ext_resource type="PackedScene" uid="uid://1h8c7hvc4qdm" path="res://scenes/explode_particle.tscn" id="3_x4acf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vyqdg"]
@@ -13,7 +13,7 @@ explode_radius = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("1_x37c1")
+texture = ExtResource("3_vyqdg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(3, 3)
