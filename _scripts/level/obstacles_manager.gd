@@ -13,6 +13,8 @@ signal player_hit
 #region Preloaded scene
 var cone_scene := preload("res://scenes/game/obstacles/cone.tscn")
 var truck_scene := preload("res://scenes/game/obstacles/truck.tscn")
+var walking_truck_scene := preload("res://scenes/game/obstacles/walking_truck.tscn")
+var exploding_cone_scene := preload("res://scenes/game/obstacles/exploding_cone.tscn")
 #endregion
 
 #region Table and array
@@ -55,8 +57,7 @@ func reset() -> void:
 	# Setup table and array
 	obstacles.clear()
 	obstacles_table.reset()
-	obstacles_table.add_item(cone_scene, 70)
-	obstacles_table.add_item(truck_scene, 30)
+	obstacles_table.add_item(exploding_cone_scene, 100)
 
 func generate_obstacle() -> void:
 	var obstacle_scene = obstacles_table.get_random()
@@ -74,6 +75,10 @@ func generate_obstacle() -> void:
 		
 		last_obstacle = obstacle_scene
 		obstacle.position = Vector2i(spawn_x, spawn_y)
+		
+		if obstacle.has_signal("player_exploded"):
+			obstacle.player_exploded.connect(_on_player_exploded)
+		
 		obstacle.body_entered.connect(_on_obstacle_hit)
 		add_child(obstacle)
 		obstacles.append(obstacle)
@@ -81,9 +86,7 @@ func generate_obstacle() -> void:
 		# Randomize next obstacle spawn time
 		if last_obstacle == truck_scene:
 			obstacle_timer.wait_time = randf_range(2.5, 3.0)
-			print("truck")
 		else: obstacle_timer.wait_time = randf_range(0.8, 2.0)
-		print(obstacle_timer.wait_time)
 
 func clean_up_obstacles() -> void:
 	if !obstacles.is_empty(): pass
@@ -99,6 +102,13 @@ func _on_obstacle_hit(body) -> void:
 	if body.name == "Player":
 		game_state = GameState.GAMEOVER
 		emit_signal("player_hit")
+	#pass
+
+func _on_player_exploded() -> void:
+	print("explodeed")
+	game_state = GameState.GAMEOVER
+	emit_signal("player_hit")
+	#pass
 
 func _on_obstacle_timer_timeout():
 	if game_state == GameState.RUNNING:

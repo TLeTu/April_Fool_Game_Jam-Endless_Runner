@@ -39,20 +39,20 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy4nr"]
-size = Vector2(241, 239)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruo2t"]
+size = Vector2(189, 184)
 
 [node name="Truck" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_2cq35")
 animation = &"run"
 autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(69.5, 10.5)
-shape = SubResource("RectangleShape2D_uy4nr")
+position = Vector2(56.5, 22)
+shape = SubResource("RectangleShape2D_ruo2t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

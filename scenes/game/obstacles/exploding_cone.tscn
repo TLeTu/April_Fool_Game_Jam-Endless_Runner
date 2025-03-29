@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctvmnjpnx0sir"]
+
+[ext_resource type="Script" uid="uid://rtugpqhhytsg" path="res://_scripts/objects/explode_cone.gd" id="1_clbi3"]
+[ext_resource type="Texture2D" uid="uid://4bb1dosls7gh" path="res://assets/img/obstacles/cone.png" id="1_x37c1"]
+[ext_resource type="PackedScene" uid="uid://1h8c7hvc4qdm" path="res://scenes/explode_particle.tscn" id="3_x4acf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vyqdg"]
+
+[node name="ExplodingCone" type="Area2D"]
+script = ExtResource("1_clbi3")
+death_particle = ExtResource("3_x4acf")
+explode_radius = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_x37c1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-3.33333, -8, -12, 11, -12, 16, 12, 16, 12, 11, 3, -8, 0, -11)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_vyqdg")

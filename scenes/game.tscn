@@ -1,16 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://bko2harxad0w4"]
 
-[ext_resource type="Script" uid="uid://bh4acy7th1hq3" path="res://_scripts/game_manager.gd" id="1_lbhrr"]
+[ext_resource type="Script" uid="uid://bh4acy7th1hq3" path="res://_scripts/level/game_manager.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://1sufk711od4p" path="res://scenes/game/parallax_background.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://g0a7nm4odskq" path="res://scenes/game/player.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://d3jpo5uwovlwk" path="res://scenes/game/ground.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://bqw2dy6gbvxle" path="res://_scripts/obstacles_manager.gd" id="5_iywne"]
-[ext_resource type="Script" uid="uid://b82t3ytm7lp4t" path="res://_scripts/time_manager.gd" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://bqw2dy6gbvxle" path="res://_scripts/level/obstacles_manager.gd" id="5_iywne"]
+[ext_resource type="Script" uid="uid://b82t3ytm7lp4t" path="res://_scripts/level/time_manager.gd" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_uwrxv")]
+visible = false
 
 [node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
 
