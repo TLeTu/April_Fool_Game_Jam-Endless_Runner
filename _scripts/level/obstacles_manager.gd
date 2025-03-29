@@ -15,6 +15,7 @@ var cone_scene := preload("res://scenes/game/obstacles/cone.tscn")
 var truck_scene := preload("res://scenes/game/obstacles/truck.tscn")
 var walking_truck_scene := preload("res://scenes/game/obstacles/walking_truck.tscn")
 var exploding_cone_scene := preload("res://scenes/game/obstacles/exploding_cone.tscn")
+var exploding_walking_car := preload("res://scenes/game/obstacles/explode_walking_truck.tscn")
 #endregion
 
 #region Table and array
@@ -48,7 +49,7 @@ func _process(delta: float) -> void:
 func reset() -> void:
 	# Setup timer
 	obstacle_timer = Timer.new()
-	obstacle_timer.wait_time = 0
+	obstacle_timer.wait_time = 2
 	obstacle_timer.one_shot = false
 	obstacle_timer.autostart = true
 	add_child(obstacle_timer)
@@ -57,7 +58,7 @@ func reset() -> void:
 	# Setup table and array
 	obstacles.clear()
 	obstacles_table.reset()
-	obstacles_table.add_item(exploding_cone_scene, 100)
+	obstacles_table.add_item(exploding_walking_car, 100)
 
 func generate_obstacle() -> void:
 	var obstacle_scene = obstacles_table.get_random()
@@ -79,10 +80,11 @@ func generate_obstacle() -> void:
 		if obstacle.has_signal("player_exploded"):
 			obstacle.player_exploded.connect(_on_player_exploded)
 		
-		obstacle.body_entered.connect(_on_obstacle_hit)
+		if obstacle.has_signal("explode_car"):
+			obstacle.get_node("DeadArea").body_entered.connect(_on_obstacle_hit)
+		else: obstacle.body_entered.connect(_on_obstacle_hit)
 		add_child(obstacle)
 		obstacles.append(obstacle)
-
 		# Randomize next obstacle spawn time
 		if last_obstacle == truck_scene:
 			obstacle_timer.wait_time = randf_range(2.5, 3.0)

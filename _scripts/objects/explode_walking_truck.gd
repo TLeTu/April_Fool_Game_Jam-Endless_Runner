@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal explode_car
+
 @onready var body_legged_sprite = $BodyAndFrontLeg
 @onready var back_leg_sprite = $BackLeg
 @onready var legless_sprite = $LeglessSprite
@@ -12,6 +14,7 @@ extends RigidBody2D
 
 func _ready() -> void:
 	self.gravity_scale = 0
+	detection_shape.shape.size = Vector2(detection_range, 50)
 
 func _process(delta: float) -> void:
 	detect_player()

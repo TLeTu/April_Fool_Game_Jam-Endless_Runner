@@ -117,6 +117,7 @@ size = Vector2(279, 134)
 
 [node name="ExplodeWalkingTruck" type="RigidBody2D"]
 script = ExtResource("1_hgh5d")
+detection_range = 1000
 death_particle = ExtResource("2_y142w")
 
 [node name="BodyAndFrontLeg" type="AnimatedSprite2D" parent="."]
@@ -148,7 +149,7 @@ texture = ExtResource("1_jjymt")
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(1, -18)
+position = Vector2(0, 140)
 shape = SubResource("RectangleShape2D_hgh5d")
 
 [node name="DeadArea" type="Area2D" parent="."]
