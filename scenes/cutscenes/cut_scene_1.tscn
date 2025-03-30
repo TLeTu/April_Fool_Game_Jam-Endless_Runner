@@ -1,0 +1,429 @@
+[gd_scene load_steps=25 format=3 uid="uid://dotn4vksg8oxn"]
+
+[ext_resource type="PackedScene" uid="uid://1sufk711od4p" path="res://scenes/game/parallax_background.tscn" id="1_ul36o"]
+[ext_resource type="Script" uid="uid://dmj45vvm27hnw" path="res://_scripts/cut_scene.gd" id="1_wx5se"]
+[ext_resource type="Texture2D" uid="uid://bxensj8107j6j" path="res://assets/img/player/endless-runner-player-sprite.png" id="3_ul36o"]
+
+[sub_resource type="Animation" id="Animation_ul36o"]
+resource_name = "cut_scene_1"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7, 4, 5.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-129, 475), Vector2(600, 475), Vector2(600, 475), Vector2(994, 475)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7, 4, 5.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"run_r", &"idle", &"run_r", &"run_l"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9, 12, 12.1, 12.2, 12.3, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7, 0, 1, 2, 3, 4, 6, 7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4.36667, 5.7, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 4.5, 5.66667, 7.6, 8.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["What a fun April 1st, i didn't get prank at all. Time to go home", "", "Wait, why am i running backwards ?!", "", "Why is time going backwards !?"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.9, 2.3, 4.62576, 5.6, 6, 7.72576, 8.5, 8.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/Control/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/Label:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["00:00 AM", "11:59 PM"]
+}
+
+[sub_resource type="Animation" id="Animation_wx5se"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-129, 475)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run_r"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["What a fun April 1st, i didn't get prank at all. Time to go home"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/Control/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Control/Label:text")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["11:59 PM"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wx5se"]
+_data = {
+&"RESET": SubResource("Animation_wx5se"),
+&"cut_scene_1": SubResource("Animation_ul36o")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx5se"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icn3h"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(448, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfogj"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av6f3"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1aw0"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujs6r"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1vco"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ahip"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8llh"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul36o"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yense"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nbfd"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akjn0"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twodk"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ge65"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsl5h"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yohh8"]
+atlas = ExtResource("3_ul36o")
+region = Rect2(448, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8fim"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx5se")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icn3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfogj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av6f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1aw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujs6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1vco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ahip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8llh")
+}],
+"loop": true,
+"name": &"run_l",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul36o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yense")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nbfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akjn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twodk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ge65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsl5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yohh8")
+}],
+"loop": true,
+"name": &"run_r",
+"speed": 12.0
+}]
+
+[node name="CutScene1" type="Node2D"]
+script = ExtResource("1_wx5se")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_ul36o")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wx5se")
+}
+
+[node name="Player" type="AnimatedSprite2D" parent="."]
+position = Vector2(-129, 475)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_p8fim")
+animation = &"run_r"
+autoplay = "idle"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 95.0
+offset_right = 400.0
+offset_bottom = 295.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_right = 400.0
+offset_bottom = 204.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="UI/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "J97"
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(800, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 32
+text = "What a fun April 1st, i didn't get prank at all. Time to go home"
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 64.0
+offset_right = 92.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
+text = "11:59 PM"

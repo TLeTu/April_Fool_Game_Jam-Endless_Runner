@@ -1,5 +1,7 @@
 extends Node
 
+signal period_change(new_period)
+
 #region Scene References
 @onready var time_label = $"../UI/Control/TimeLabel"
 @onready var game_manager = $".."
@@ -7,16 +9,19 @@ extends Node
 
 #region Time Variables
 var countdown_time : int = 23 * 60 + 59  # 23:59 in minutes
-var countdown_speed : float = 1  # 1 real-time second = 1 minute decrease
+var countdown_speed : float = 100  # 1 real-time second = 1 minute decrease
 var elapsed_time : float = 0.0  # Tracks time passed for countdown
 #endregion
 
 #region Game State
 enum GameState { RUNNING, PAUSED, GAMEOVER }
 var game_state
+var period : int
 #endregion
+var temp_period
 
 func _ready() -> void:
+	temp_period = period
 	reset()
 	game_manager.connect("game_state_changed", self._on_game_state_changed)
 
@@ -24,10 +29,15 @@ func _process(delta: float) -> void:
 	if !game_state == GameState.RUNNING:
 		return
 	update_countdown(delta)
+	check_time_period()
+	if period != temp_period:
+		temp_period = period
+		print("period:", period)
 
 func reset() -> void:
 	countdown_time = 23 * 60 + 59
 	elapsed_time = 0.0
+	period = 1
 	update_time_label()
 
 func update_time_label() -> void:
@@ -50,20 +60,25 @@ func update_countdown(delta: float) -> void:
 		elapsed_time = 0.0
 		update_time_label()
 
-func get_time_period() -> int:
+func check_time_period() -> void:
 	var hour = (countdown_time / 60) % 24  # Lấy giờ từ 0 đến 23 (đếm ngược)
 	if hour >= 20 or hour == 0:  # 0 AM -> 8 PM
-		return 1
+		set_game_period(1)
 	elif hour >= 16:  # 8 PM -> 4 PM
-		return 2
+		set_game_period(2)
 	elif hour >= 12:  # 4 PM -> 12 PM
-		return 3
+		set_game_period(3)
 	elif hour >= 8:  # 12 PM -> 8 AM
-		return 4
+		set_game_period(4)
 	elif hour >= 4:  # 8 AM -> 4 AM
-		return 5
+		set_game_period(5)
 	else:  # 4 AM -> 0 AM (ngày hôm trước)
-		return 6
+		set_game_period(6)
 
 func _on_game_state_changed(new_state):
 	game_state = new_state
+
+func set_game_period(new_period):
+	if period != new_period:
+		period = new_period
+		emit_signal("period_change", period)  # Emit the signal
