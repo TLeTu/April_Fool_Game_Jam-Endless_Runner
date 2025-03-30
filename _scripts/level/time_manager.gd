@@ -1,15 +1,16 @@
 extends Node
 
 signal period_change(new_period)
+signal end_period
 
 #region Scene References
-@onready var time_label = $"../UI/Control/TimeLabel"
+@onready var time_label = $"../UI/Control/ColorRect/TimeLabel"
 @onready var game_manager = $".."
 #endregion
 
 #region Time Variables
 var countdown_time : int = 23 * 60 + 59  # 23:59 in minutes
-var countdown_speed : float = 100  # 1 real-time second = 1 minute decrease
+var countdown_speed : float = 100000  # 1 real-time second = 1 minute decrease
 var elapsed_time : float = 0.0  # Tracks time passed for countdown
 #endregion
 
@@ -17,6 +18,7 @@ var elapsed_time : float = 0.0  # Tracks time passed for countdown
 enum GameState { RUNNING, PAUSED, GAMEOVER }
 var game_state
 var period : int
+var period_ended : bool = false
 #endregion
 var temp_period
 
@@ -51,8 +53,11 @@ func update_time_label() -> void:
 	time_label.text = "%02d:%02d %s" % [hours, minutes, period]
 
 func update_countdown(delta: float) -> void:
-	if countdown_time <= 0:
+	if countdown_time <= 0 and !period_ended:
+		emit_signal("end_period")
+		period_ended = true
 		return  # Ngừng đếm ngược khi đạt 00:00
+	if period_ended: return
 	
 	elapsed_time += delta * countdown_speed
 	if elapsed_time >= 1.0:

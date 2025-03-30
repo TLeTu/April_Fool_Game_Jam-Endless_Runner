@@ -8,6 +8,7 @@ signal player_exploded
 @onready var sprite = $Sprite2D
 @onready var detection_area = $DetectionArea
 @onready var detection_shape = $DetectionArea/DetectionShape
+@onready var explode_sound = $ExplodeSound
 
 var has_explode : bool = false
 
@@ -26,6 +27,7 @@ func detect_player() -> void:
 
 func explode_animation() -> void:
 	# Instantiate the explode partical at the srpite location
+	explode_sound.play()
 	var _particle = death_particle.instantiate()
 	_particle.position = sprite.global_position
 	_particle.rotation = sprite.global_rotation

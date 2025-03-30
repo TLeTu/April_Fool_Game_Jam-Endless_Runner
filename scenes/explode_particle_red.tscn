@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://1h8c7hvc4qdm"]
+[gd_scene load_steps=7 format=3 uid="uid://8aw6avicct2r"]
 
-[ext_resource type="Script" uid="uid://dtyje2k4a37v3" path="res://_scripts/explode_particle.gd" id="1_co62o"]
+[ext_resource type="Script" uid="uid://dtyje2k4a37v3" path="res://_scripts/explode_particle.gd" id="1_wsouu"]
 
 [sub_resource type="Gradient" id="Gradient_ibfpk"]
 offsets = PackedFloat32Array(0.518182, 1)
@@ -35,5 +35,5 @@ amount = 50
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_170dp")
-script = ExtResource("1_co62o")
-modulate_color = Color(1, 1, 0, 1)
+script = ExtResource("1_wsouu")
+modulate_color = Color(1, 0, 0, 1)

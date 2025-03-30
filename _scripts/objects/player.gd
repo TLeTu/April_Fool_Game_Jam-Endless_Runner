@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var fall_gravity: int = 3000
 @export var jump_velocity: int = -850
 @export var jump_buffer_time: float = 0.08  # 100ms jump buffer window
+@export var death_particle : PackedScene
 #endregion
 
 #region Node References
@@ -12,6 +13,8 @@ extends CharacterBody2D
 @onready var run_collider := $RunCol
 @onready var duck_collider := $DuckCol
 @onready var game_manager := $".."
+@onready var jump_sound := $JumpSound
+@onready var dead_sound := $DeadSound
 #endregion
 
 #region State Variables
@@ -42,6 +45,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_game_state_changed(new_state):
 	game_state = new_state
+	if new_state == GameState.GAMEOVER:
+		var _particle = death_particle.instantiate()
+		_particle.position = player_sprite.global_position
+		_particle.rotation = player_sprite.global_rotation
+		_particle.emitting = true
+		player_sprite.queue_free()
+		dead_sound.play()
+		add_child(_particle)
 
 #region Physics Helpers
 func _get_gravity() -> int:
@@ -55,6 +66,7 @@ func _apply_gravity(delta: float) -> void:
 #region Input Handling
 func _handle_jump_input() -> void:
 	if Input.is_action_just_pressed("ui_accept"):
+		jump_sound.play()
 		jump_buffer_timer = jump_buffer_time  # Store jump input for a short time
 
 func _handle_jump_buffer(delta: float) -> void:

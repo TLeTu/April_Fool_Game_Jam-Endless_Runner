@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6l7nybjuyhvm"]
+[gd_scene load_steps=4 format=3 uid="uid://b6l7nybjuyhvm"]
 
 [ext_resource type="PackedScene" uid="uid://bko2harxad0w4" path="res://scenes/game.tscn" id="1_w2twt"]
 [ext_resource type="PackedScene" uid="uid://dotn4vksg8oxn" path="res://scenes/cutscenes/cut_scene_1.tscn" id="2_pw63i"]
+[ext_resource type="AudioStream" uid="uid://bfkhnkksloovq" path="res://assets/sound/026491_pixel-song-8-72675.mp3" id="3_7ykc4"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Game" parent="." instance=ExtResource("1_w2twt")]
 
 [node name="CutScene1" parent="." instance=ExtResource("2_pw63i")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7ykc4")
+volume_db = -30.0
+autoplay = true
+parameters/looping = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b28tb6d2jm681"]
+[gd_scene load_steps=25 format=3 uid="uid://b28tb6d2jm681"]
 
 [ext_resource type="Script" uid="uid://bgpj38a72llju" path="res://_scripts/objects/explode_walking_truck.gd" id="1_hgh5d"]
 [ext_resource type="Texture2D" uid="uid://bjfqcjlftvnyj" path="res://assets/img/obstacles/Car-Sheet.png" id="1_jjymt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1h8c7hvc4qdm" path="res://scenes/explode_particle.tscn" id="2_y142w"]
 [ext_resource type="Texture2D" uid="uid://xcdkwgog53kd" path="res://assets/img/obstacles/car-legless.png" id="3_s458p"]
 [ext_resource type="Texture2D" uid="uid://b8tx4213mwffu" path="res://assets/img/obstacles/Car-Sheet-explode.png" id="3_v478x"]
+[ext_resource type="AudioStream" uid="uid://dt3unulqeinhu" path="res://assets/sound/retro-explode-1-236678.mp3" id="7_h7kiq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7kiq"]
 atlas = ExtResource("3_v478x")
@@ -114,7 +115,7 @@ size = Vector2(140, 5)
 size = Vector2(516, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y142w"]
-size = Vector2(279, 134)
+size = Vector2(279, 144)
 
 [node name="ExplodeWalkingTruck" type="RigidBody2D"]
 script = ExtResource("1_hgh5d")
@@ -122,6 +123,7 @@ detection_range = 1000
 death_particle = ExtResource("2_y142w")
 
 [node name="BodyAndFrontLeg" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 2
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_2cq35")
@@ -156,5 +158,9 @@ shape = SubResource("RectangleShape2D_hgh5d")
 [node name="DeadArea" type="Area2D" parent="."]
 
 [node name="DeadShape" type="CollisionShape2D" parent="DeadArea"]
-position = Vector2(-3.5, -69)
+position = Vector2(-3.5, -64)
 shape = SubResource("RectangleShape2D_y142w")
+
+[node name="ExplodeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h7kiq")
+volume_db = -30.0

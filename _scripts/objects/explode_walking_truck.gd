@@ -7,6 +7,7 @@ signal explode_car
 @onready var legless_sprite = $LeglessSprite
 @onready var detection_area = $DetectionArea
 @onready var detection_shape = $DetectionArea/DetectionShape
+@onready var explode_sound = $ExplodeSound
 
 @export var detection_range : int = 100
 @export var gravity : int = 1
@@ -26,6 +27,7 @@ func detect_player() -> void:
 
 func explode_animation() -> void:
 	# Instantiate the explode partical at the srpite location
+	explode_sound.play()
 	var _particle = death_particle.instantiate()
 	_particle.position = body_legged_sprite.global_position
 	_particle.rotation = body_legged_sprite.global_rotation

@@ -1,13 +1,15 @@
-[gd_scene load_steps=46 format=3 uid="uid://dotn4vksg8oxn"]
+[gd_scene load_steps=51 format=3 uid="uid://dotn4vksg8oxn"]
 
 [ext_resource type="PackedScene" uid="uid://1sufk711od4p" path="res://scenes/game/parallax_background.tscn" id="1_ul36o"]
 [ext_resource type="Script" uid="uid://dmj45vvm27hnw" path="res://_scripts/cut_scene.gd" id="1_wx5se"]
 [ext_resource type="Texture2D" uid="uid://bxensj8107j6j" path="res://assets/img/player/endless-runner-player-sprite.png" id="3_ul36o"]
+[ext_resource type="Script" uid="uid://odhvx35ddygy" path="res://_scripts/text_blink.gd" id="4_gsl5h"]
 [ext_resource type="Texture2D" uid="uid://25sj55tod02v" path="res://assets/img/obstacles/cone-explode.png" id="4_yense"]
 [ext_resource type="PackedScene" uid="uid://1h8c7hvc4qdm" path="res://scenes/explode_particle.tscn" id="5_0nbfd"]
 [ext_resource type="Texture2D" uid="uid://b8tx4213mwffu" path="res://assets/img/obstacles/Car-Sheet-explode.png" id="6_akjn0"]
 [ext_resource type="Texture2D" uid="uid://dun16dednm17r" path="res://assets/img/obstacles/Car-back-leg-Sheet.png" id="7_twodk"]
 [ext_resource type="Texture2D" uid="uid://xcdkwgog53kd" path="res://assets/img/obstacles/car-legless.png" id="8_twodk"]
+[ext_resource type="Texture2D" uid="uid://d1ctglhs3kw02" path="res://assets/img/player/KICM.png" id="9_2ge65"]
 
 [sub_resource type="Animation" id="Animation_ul36o"]
 resource_name = "cut_scene_1"
@@ -387,6 +389,30 @@ tracks/21/keys = {
 "update": 0,
 "values": [Vector2(249, 601)]
 }
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("kicm:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-99, 471)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("UI/Panel/VBoxContainer/Label:text")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["J97"]
+}
 
 [sub_resource type="Animation" id="Animation_akjn0"]
 resource_name = "cut_scene_2"
@@ -696,12 +722,77 @@ tracks/12/keys = {
 "values": [0.0, 0.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_twodk"]
+resource_name = "end"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("kicm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-99, 471), Vector2(147, 471)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Panel/VBoxContainer/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["J97", "K-ICM", "J97", "K-ICM"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4.00833, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["", "Did you have fun ?", "Are you trying to kill me ?!", "Haha it's just a prank bro, enjoy April Fool's !"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.9, 2.3, 3.80833, 3.90833, 4.3, 5.8, 5.9, 6.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wx5se"]
 _data = {
 &"RESET": SubResource("Animation_wx5se"),
 &"cut_scene_1": SubResource("Animation_ul36o"),
 &"cut_scene_2": SubResource("Animation_akjn0"),
-&"cut_scene_3": SubResource("Animation_yense")
+&"cut_scene_3": SubResource("Animation_yense"),
+&"end": SubResource("Animation_twodk")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wx5se"]
@@ -941,6 +1032,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc54j"]
+atlas = ExtResource("9_2ge65")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waeoo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc54j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="CutScene1" type="Node2D"]
 script = ExtResource("1_wx5se")
 
@@ -1024,6 +1130,22 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 42
 text = "11:59 PM"
 
+[node name="skip_label" type="Label" parent="UI"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "PRESS SPACE TO SKIP"
+script = ExtResource("4_gsl5h")
+
 [node name="explode" parent="." instance=ExtResource("5_0nbfd")]
 position = Vector2(252, 420)
 
@@ -1049,3 +1171,8 @@ visible = false
 position = Vector2(249, 601)
 scale = Vector2(3, 3)
 texture = ExtResource("8_twodk")
+
+[node name="kicm" type="AnimatedSprite2D" parent="."]
+position = Vector2(-99, 471)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_waeoo")

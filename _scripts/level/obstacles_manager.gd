@@ -91,8 +91,8 @@ func generate_obstacle() -> void:
 		add_child(obstacle)
 		obstacles.append(obstacle)
 		# Randomize next obstacle spawn time
-		if last_obstacle == truck_scene:
-			obstacle_timer.wait_time = randf_range(2.5, 3.0)
+		if last_obstacle == truck_scene or last_obstacle == exploding_walking_car or last_obstacle == walking_truck_scene:
+			obstacle_timer.wait_time = randf_range(2, 3)
 		else: obstacle_timer.wait_time = randf_range(0.8, 2.0)
 
 func clean_up_obstacles() -> void:
@@ -113,11 +113,9 @@ func remove_obstacle(obstacle) -> void:
 
 func _on_obstacle_hit(body) -> void:
 	if body.name == "Player":
-		game_state = GameState.GAMEOVER
 		emit_signal("player_hit")
 
 func _on_player_exploded() -> void:
-	game_state = GameState.GAMEOVER
 	emit_signal("player_hit")
 
 
