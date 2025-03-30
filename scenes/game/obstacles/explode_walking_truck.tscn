@@ -1,55 +1,56 @@
-[gd_scene load_steps=23 format=3 uid="uid://b28tb6d2jm681"]
+[gd_scene load_steps=24 format=3 uid="uid://b28tb6d2jm681"]
 
 [ext_resource type="Script" uid="uid://bgpj38a72llju" path="res://_scripts/objects/explode_walking_truck.gd" id="1_hgh5d"]
 [ext_resource type="Texture2D" uid="uid://bjfqcjlftvnyj" path="res://assets/img/obstacles/Car-Sheet.png" id="1_jjymt"]
 [ext_resource type="Texture2D" uid="uid://dun16dednm17r" path="res://assets/img/obstacles/Car-back-leg-Sheet.png" id="2_s458p"]
 [ext_resource type="PackedScene" uid="uid://1h8c7hvc4qdm" path="res://scenes/explode_particle.tscn" id="2_y142w"]
-[ext_resource type="Texture2D" uid="uid://bbn2giq0i3myr" path="res://assets/img/obstacles/car-legless.png" id="3_s458p"]
+[ext_resource type="Texture2D" uid="uid://xcdkwgog53kd" path="res://assets/img/obstacles/car-legless.png" id="3_s458p"]
+[ext_resource type="Texture2D" uid="uid://b8tx4213mwffu" path="res://assets/img/obstacles/Car-Sheet-explode.png" id="3_v478x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixinp"]
-atlas = ExtResource("1_jjymt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7kiq"]
+atlas = ExtResource("3_v478x")
 region = Rect2(0, 0, 142, 103)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wnip"]
-atlas = ExtResource("1_jjymt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_36mbp"]
+atlas = ExtResource("3_v478x")
 region = Rect2(142, 0, 142, 103)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_adilw"]
-atlas = ExtResource("1_jjymt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j6vg"]
+atlas = ExtResource("3_v478x")
 region = Rect2(284, 0, 142, 103)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4asx"]
-atlas = ExtResource("1_jjymt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8t0k"]
+atlas = ExtResource("3_v478x")
 region = Rect2(426, 0, 142, 103)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x67yt"]
-atlas = ExtResource("1_jjymt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnwr1"]
+atlas = ExtResource("3_v478x")
 region = Rect2(568, 0, 142, 103)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0qma6"]
-atlas = ExtResource("1_jjymt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwso0"]
+atlas = ExtResource("3_v478x")
 region = Rect2(710, 0, 142, 103)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2cq35"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ixinp")
+"texture": SubResource("AtlasTexture_h7kiq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8wnip")
+"texture": SubResource("AtlasTexture_36mbp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_adilw")
+"texture": SubResource("AtlasTexture_3j6vg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g4asx")
+"texture": SubResource("AtlasTexture_j8t0k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x67yt")
+"texture": SubResource("AtlasTexture_rnwr1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0qma6")
+"texture": SubResource("AtlasTexture_mwso0")
 }],
 "loop": true,
 "name": &"run",

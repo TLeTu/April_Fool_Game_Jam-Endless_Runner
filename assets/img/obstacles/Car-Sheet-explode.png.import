@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xcdkwgog53kd"
-path="res://.godot/imported/car-legless.png-d50d8aea569fc44564e7b891b523d51d.ctex"
+uid="uid://b8tx4213mwffu"
+path="res://.godot/imported/Car-Sheet-explode.png-43839343adb420fa38b53b55e840ee07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/obstacles/car-legless.png"
-dest_files=["res://.godot/imported/car-legless.png-d50d8aea569fc44564e7b891b523d51d.ctex"]
+source_file="res://assets/img/obstacles/Car-Sheet-explode.png"
+dest_files=["res://.godot/imported/Car-Sheet-explode.png-43839343adb420fa38b53b55e840ee07.ctex"]
 
 [params]
 

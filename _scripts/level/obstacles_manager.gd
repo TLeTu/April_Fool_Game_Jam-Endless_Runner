@@ -47,7 +47,8 @@ func _ready() -> void:
 	game_manager.connect("clean_all_obstacles", self.clean_all_obstacles)
 
 func _process(delta: float) -> void:
-	clean_up_obstacles()
+	if game_state == GameState.RUNNING:
+		clean_up_obstacles()
 
 func reset() -> void:
 	# Setup timer
@@ -103,7 +104,8 @@ func clean_up_obstacles() -> void:
 func clean_all_obstacles() -> void:
 	if obstacles.is_empty(): return
 	for obstacle in obstacles:
-			remove_obstacle(obstacle)
+		print("cleaned")
+		remove_obstacle(obstacle)
 
 func remove_obstacle(obstacle) -> void:
 	obstacle.queue_free()
@@ -115,7 +117,6 @@ func _on_obstacle_hit(body) -> void:
 		emit_signal("player_hit")
 
 func _on_player_exploded() -> void:
-	print("explodeed")
 	game_state = GameState.GAMEOVER
 	emit_signal("player_hit")
 

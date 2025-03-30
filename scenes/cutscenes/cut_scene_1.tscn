@@ -1,8 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://dotn4vksg8oxn"]
+[gd_scene load_steps=46 format=3 uid="uid://dotn4vksg8oxn"]
 
 [ext_resource type="PackedScene" uid="uid://1sufk711od4p" path="res://scenes/game/parallax_background.tscn" id="1_ul36o"]
 [ext_resource type="Script" uid="uid://dmj45vvm27hnw" path="res://_scripts/cut_scene.gd" id="1_wx5se"]
 [ext_resource type="Texture2D" uid="uid://bxensj8107j6j" path="res://assets/img/player/endless-runner-player-sprite.png" id="3_ul36o"]
+[ext_resource type="Texture2D" uid="uid://25sj55tod02v" path="res://assets/img/obstacles/cone-explode.png" id="4_yense"]
+[ext_resource type="PackedScene" uid="uid://1h8c7hvc4qdm" path="res://scenes/explode_particle.tscn" id="5_0nbfd"]
+[ext_resource type="Texture2D" uid="uid://b8tx4213mwffu" path="res://assets/img/obstacles/Car-Sheet-explode.png" id="6_akjn0"]
+[ext_resource type="Texture2D" uid="uid://dun16dednm17r" path="res://assets/img/obstacles/Car-back-leg-Sheet.png" id="7_twodk"]
+[ext_resource type="Texture2D" uid="uid://xcdkwgog53kd" path="res://assets/img/obstacles/car-legless.png" id="8_twodk"]
 
 [sub_resource type="Animation" id="Animation_ul36o"]
 resource_name = "cut_scene_1"
@@ -14,7 +19,7 @@ tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.7, 4, 5.66667),
+"times": PackedFloat32Array(0, 1.7, 4, 5.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-129, 475), Vector2(600, 475), Vector2(600, 475), Vector2(994, 475)]
@@ -102,6 +107,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": ["00:00 AM", "11:59 PM"]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Player:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wx5se"]
@@ -202,11 +219,489 @@ tracks/7/keys = {
 "update": 1,
 "values": ["11:59 PM"]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cone-explode:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-145, 552)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("explode:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cone-explode:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UI/Panel:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 132)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:bbcode_enabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Player:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Car:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-212, 443)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Car:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Car/leg:frame")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("explode:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(252, 420)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Car/leg:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Car:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Car-legless:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Car-legless:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(249, 601)]
+}
+
+[sub_resource type="Animation" id="Animation_akjn0"]
+resource_name = "cut_scene_2"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Control/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Control/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["7:59 PM"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cone-explode:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-145, 552), Vector2(124, 552)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("explode:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cone-explode:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Panel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.827961),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 132)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI/Panel:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.828),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:bbcode_enabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.828, 3.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["What is that ?", "Did that thing just explode ?! I shouldn't get too close to it"]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.728, 1.028, 2.93333, 2.96667, 3.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Player:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("explode:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.23024),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(125, 565), Vector2(125, 565)]
+}
+
+[sub_resource type="Animation" id="Animation_yense"]
+resource_name = "cut_scene_3"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 132)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-212, 443), Vector2(249, 443)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Car/leg:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("explode:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(252, 420), Vector2(252, 420)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("explode:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Car/leg:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Car:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Car-legless:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Car-legless:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(249, 446), Vector2(249, 446), Vector2(249, 601)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("UI/Panel:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Did the legs just explode ?! I should be careful !", "Did the legs just explode ?! I should be careful !"]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("UI/Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2.4, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wx5se"]
 _data = {
 &"RESET": SubResource("Animation_wx5se"),
-&"cut_scene_1": SubResource("Animation_ul36o")
+&"cut_scene_1": SubResource("Animation_ul36o"),
+&"cut_scene_2": SubResource("Animation_akjn0"),
+&"cut_scene_3": SubResource("Animation_yense")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wx5se"]
@@ -346,6 +841,106 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6tfu"]
+atlas = ExtResource("6_akjn0")
+region = Rect2(0, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hd1s"]
+atlas = ExtResource("6_akjn0")
+region = Rect2(142, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj0n7"]
+atlas = ExtResource("6_akjn0")
+region = Rect2(284, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_437ao"]
+atlas = ExtResource("6_akjn0")
+region = Rect2(426, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fsid"]
+atlas = ExtResource("6_akjn0")
+region = Rect2(568, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5e67"]
+atlas = ExtResource("6_akjn0")
+region = Rect2(710, 0, 142, 103)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sc54j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6tfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hd1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj0n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_437ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fsid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5e67")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waeoo"]
+atlas = ExtResource("7_twodk")
+region = Rect2(0, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfoq6"]
+atlas = ExtResource("7_twodk")
+region = Rect2(142, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8yiq"]
+atlas = ExtResource("7_twodk")
+region = Rect2(284, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnkgk"]
+atlas = ExtResource("7_twodk")
+region = Rect2(426, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpgx5"]
+atlas = ExtResource("7_twodk")
+region = Rect2(568, 0, 142, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttdcj"]
+atlas = ExtResource("7_twodk")
+region = Rect2(710, 0, 142, 103)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcvkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waeoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfoq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8yiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnkgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpgx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttdcj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="CutScene1" type="Node2D"]
 script = ExtResource("1_wx5se")
 
@@ -357,6 +952,7 @@ libraries = {
 }
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(-129, 475)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_p8fim")
@@ -371,9 +967,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -400.0
-offset_top = 95.0
+offset_top = 132.0
 offset_right = 400.0
-offset_bottom = 295.0
+offset_bottom = 332.0
 grow_horizontal = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel"]
@@ -427,3 +1023,29 @@ offset_bottom = 122.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 42
 text = "11:59 PM"
+
+[node name="explode" parent="." instance=ExtResource("5_0nbfd")]
+position = Vector2(252, 420)
+
+[node name="Cone-explode" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-145, 552)
+scale = Vector2(3, 3)
+texture = ExtResource("4_yense")
+
+[node name="Car" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-212, 443)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_sc54j")
+
+[node name="leg" type="AnimatedSprite2D" parent="Car"]
+visible = false
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_kcvkd")
+
+[node name="Car-legless" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(249, 601)
+scale = Vector2(3, 3)
+texture = ExtResource("8_twodk")

@@ -41,13 +41,15 @@ var temp_player_position : Vector2
 var temp_speed : float
 
 func _ready() -> void:
-	set_visibile(true)
-	set_game_state(GameState.RUNNING)
+	set_visibile(false)
+	set_game_state(GameState.PAUSED)
 	obstacles_manager.connect("player_hit", self._on_player_hit)
 	time_manager.connect("period_change", self._on_period_change)
 	cutscene_player.connect("animation_done", self._on_cutscene_done)
 	
 	# Reset position and velocity
+	temp_camera_position = CAMERA_START_POS
+	temp_player_position = PLAYER_START_POS
 	player.position = PLAYER_START_POS
 	player.velocity = Vector2i.ZERO
 	ground.position = Vector2i.ZERO
@@ -136,20 +138,24 @@ func _on_period_change(new_period) -> void:
 	#if new_period == 2:
 		#set_game_state(GameState.PAUSED)
 	match new_period:
-		2:
+		5:
 			max_speed = 20
-			pause_game()
-			cutscene = 1
-			set_temp_position() 
-			emit_signal("play_cutscene", cutscene)
 		3:
 			max_speed = 25
 		4:
 			max_speed = 30
-		5: 
+		2: 
 			max_speed = 35
+			pause_game()
+			cutscene = 2
+			set_temp_position() 
+			emit_signal("play_cutscene", cutscene)
 		6: 
 			max_speed = 40
+			pause_game()
+			cutscene = 3
+			set_temp_position() 
+			emit_signal("play_cutscene", cutscene)
 		_:
 			return
 
