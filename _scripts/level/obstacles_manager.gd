@@ -4,6 +4,12 @@ extends Node
 signal player_hit
 #endregion
 
+#region Constant
+var CONE_Y : int = 552
+var TRUCK_Y : int = 486
+var CAR_Y : int = 446
+#endregion
+
 #region Scene References
 @onready var ground = $"../Ground"
 @onready var camera = $"../Camera2D"
@@ -27,9 +33,9 @@ var obstacles : Array = []
 #region Spawner helps
 var last_obstacle
 var obstacle_timer: Timer
-var screen_size: Vector2i
-var ground_height: int
-var ground_scale: Vector2i
+var screen_size: Vector2i = Vector2i.ZERO
+var ground_height: int = 0
+var ground_scale: Vector2i = Vector2i.ZERO
 #endregion
 
 #region Game State
@@ -47,8 +53,7 @@ func _ready() -> void:
 	game_manager.connect("clean_all_obstacles", self.clean_all_obstacles)
 
 func _process(delta: float) -> void:
-	if game_state == GameState.RUNNING:
-		clean_up_obstacles()
+	clean_up_obstacles()
 
 func reset() -> void:
 	# Setup timer
@@ -75,9 +80,15 @@ func generate_obstacle() -> void:
 		
 		var obstacle_scale = obstacle_sprite.scale
 		
-		#var spawn_x = -screen_size.x - game_manager.score - 100
 		var spawn_x = -screen_size.x - (-camera.position.x - camera.get_window().size.x/2) - 500
-		var spawn_y = screen_size.y - ground_height * ground_scale.y - (obstacle_height * obstacle_scale.y / 2) +40
+		var spawn_y = 0
+		#var spawn_y = screen_size.y - ground_height * ground_scale.y - (obstacle_height * obstacle_scale.y / 2) + 40
+		if obstacle_scene == cone_scene or obstacle_scene == exploding_cone_scene:
+			spawn_y = CONE_Y
+		elif obstacle_scene == truck_scene:
+			spawn_y = TRUCK_Y
+		elif  obstacle_scene == exploding_walking_car or obstacle_scene == walking_truck_scene:
+			spawn_y = CAR_Y
 		
 		last_obstacle = obstacle_scene
 		obstacle.position = Vector2i(spawn_x, spawn_y)
@@ -120,6 +131,7 @@ func _on_player_exploded() -> void:
 
 
 func _on_obstacle_timer_timeout():
+	print("Obstacle timer triggered")  # Debugging print
 	if game_state == GameState.RUNNING:
 		generate_obstacle()
 
@@ -128,28 +140,29 @@ func _on_game_state_changed(new_state):
 	
 
 func _on_period_change(new_period):
+	print("Period changed to: ", new_period)
 	match new_period:
 		2:
-			obstacles_table.change_weight(cone_scene, 60)
 			obstacles_table.add_item(truck_scene, 40)
+			obstacles_table.change_weight(cone_scene, 60)
 		3:
+			obstacles_table.add_item(walking_truck_scene, 20)
 			obstacles_table.change_weight(cone_scene, 45)
 			obstacles_table.change_weight(truck_scene, 35)
-			obstacles_table.add_item(walking_truck_scene, 20)
 		4:
 			obstacles_table.change_weight(cone_scene, 35)
 			obstacles_table.change_weight(truck_scene, 30)
 			obstacles_table.change_weight(walking_truck_scene, 35)
 		5:
+			obstacles_table.add_item(exploding_cone_scene, 20)
 			obstacles_table.change_weight(cone_scene, 25)
 			obstacles_table.change_weight(truck_scene, 25)
 			obstacles_table.change_weight(walking_truck_scene, 30)
-			obstacles_table.add_item(exploding_cone_scene, 20)
 		6:
+			obstacles_table.add_item(exploding_walking_car, 15)
 			obstacles_table.change_weight(cone_scene, 20)
 			obstacles_table.change_weight(truck_scene, 20)
 			obstacles_table.change_weight(walking_truck_scene, 20)
 			obstacles_table.change_weight(exploding_cone_scene, 25)
-			obstacles_table.add_item(exploding_walking_car, 15)
 		_:
 			return

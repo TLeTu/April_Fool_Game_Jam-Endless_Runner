@@ -10,7 +10,7 @@ signal end_period
 
 #region Time Variables
 var countdown_time : int = 23 * 60 + 59  # 23:59 in minutes
-var countdown_speed : float = 100000  # 1 real-time second = 1 minute decrease
+var countdown_speed : float = 10  # 1 real-time second = 1 minute decrease
 var elapsed_time : float = 0.0  # Tracks time passed for countdown
 #endregion
 

@@ -3,7 +3,7 @@ extends Area2D
 signal player_exploded
 
 @export var death_particle : PackedScene
-@export var explode_radius : int = 50
+@export var explode_radius : int = 80
 
 @onready var sprite = $Sprite2D
 @onready var detection_area = $DetectionArea
